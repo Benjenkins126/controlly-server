@@ -1,11 +1,12 @@
-const { db } = require('../databases/utils');
+const Changelog = require("../databases/Changelog");
 
 const getAllChangelogs = () => {
-    return;
+    const allChangelogs = Changelog.getAllChangelogs();
+    return allChangelogs;
 };
 
-const getSpecificChangelog = () => {
-    return;
+const getSpecificChangelog = (id) => {
+    return Changelog.getSpecificChangelog(id);
 }
 
 module.exports = {
