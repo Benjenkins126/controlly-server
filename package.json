@@ -1,0 +1,31 @@
+{
+  "name": "controlly-server",
+  "version": "1.0.0",
+  "description": "Back-end API for the Controlly Smart Home",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Benjenkins126/controlly-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Benjenkins126/controlly-server/issues"
+  },
+  "homepage": "https://github.com/Benjenkins126/controlly-server#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "chalk": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "sqlite3": "^5.0.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
