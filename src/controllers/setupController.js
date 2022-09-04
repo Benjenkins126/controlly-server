@@ -11,7 +11,7 @@ const getSetupStep = (req, res) => {
 }
 
 // POST: /api/v1/setup/step
-// Authentication: None
+// Authentication: None (SetupStage !== 0)
 const setSetupStep = (req, res) => {
     const body = req.query;
     const stageId = parseInt(body.stage);
@@ -32,6 +32,8 @@ const setSetupStep = (req, res) => {
     }
 }
 
+// GET: /api/v1/setup/health-check
+// Authentication: None (Setup Stage !== 0)
 // const runSystemsHealthCheck = (req, res) => {
 //     return false;
 // }
