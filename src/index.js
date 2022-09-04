@@ -6,7 +6,7 @@ const v1ChangelogRouter = require('./v1/routes/changelogRoutes');
 const v1SetupRouter = require('./v1/routes/setupRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 app.use("/api/v1/changelog", v1ChangelogRouter);
