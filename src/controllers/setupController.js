@@ -11,10 +11,13 @@ const getSetupStep = (req, res) => {
 const setSetupStep = (req, res) => {
     const body = req.query;
     const stageId = parseInt(body.stage);
+    const currentStageId = setupService.getSetupStep();
 
     // Check to ensure there is a stage parameter present, and it matches the validation
-    if(!stageId || (stageId !== 1 && stageId !== 2 && stageId !== 3 && stageId !== 0)) {
+    if(stageId !== 1 && stageId !== 2 && stageId !== 3 && stageId !== 0) {
         res.status(400).send({ status: "error", message: "The parameter 'stage' is missing or does not match the list of possible values" });
+    } else if(parseInt(currentStageId) === 0) {
+        res.status(400).send({ status: "error", message: "Your installation has completed setup, therefore cannot alter the setup step." })
     } else {
         const setupStage = setupService.setSetupStep(stageId);
         if(setupStage) {
