@@ -12,13 +12,13 @@ const setSetupStep = (step) => {
 //     return '';
 // }
 
-// const setCoreInformation = (name, domain, timezone) => {
-//     return '';
-// }
+const setCoreInformation = (name, domain, timezone) => {
+    return Setup.setCoreInformation(name, domain, timezone);
+}
 
 module.exports = {
     getSetupStep,
     setSetupStep,
     // runSystemsHealthCheck,
-    // setCoreInformation
+    setCoreInformation
 }

@@ -6,6 +6,6 @@ const router = express.Router();
 router.get("/step", setupController.getSetupStep);
 router.post("/step", setupController.setSetupStep);
 // router.get("/health-check", setupController.runSystemsHealthCheck);
-// router.post("/core", setupController.setCoreInformation);
+router.post("/core", setupController.setCoreInformation);
 
 module.exports = router;
