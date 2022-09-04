@@ -1,5 +1,7 @@
 const setupService = require("../services/setupService");
 
+// GET: /api/v1/setup/step
+// Authentication: None
 const getSetupStep = (req, res) => {
     const setupStep = parseInt(setupService.getSetupStep());
     if(setupStep === null || (setupStep !== 1 && setupStep !== 2 && setupStep !== 3 && setupStep !== 0)) {
@@ -8,6 +10,8 @@ const getSetupStep = (req, res) => {
     res.status(200).send({ status: "success", stage: setupStep });
 }
 
+// POST: /api/v1/setup/step
+// Authentication: None
 const setSetupStep = (req, res) => {
     const body = req.query;
     const stageId = parseInt(body.stage);
