@@ -1,5 +1,6 @@
 const setupService = require("../services/setupService");
 const timezones = require("timezones-list");
+const request = require("request");
 
 // GET: /api/v1/setup/step
 // Authentication: None
@@ -36,7 +37,23 @@ const setSetupStep = (req, res) => {
 // GET: /api/v1/setup/health-check
 // Authentication: None (Setup Stage !== 0)
 // const runSystemsHealthCheck = (req, res) => {
-//     return false;
+//     const currentStageId = setupService.getSetupStep();
+//     console.log('sss');
+
+//     if(parseInt(currentStageId) === 0) {
+//         return res.status(400).send({ status: "error", message: "Your setup details have been locked due to the setup being marked as complete" });
+//     }
+
+//     // Step 1: Check Web Server Connection
+//     request("http://localhost:3000/setup/step-one", function(error, response, body) {
+//         console.log(response.statusCode);
+//     });
+
+//     // Step 2: Check Core Service
+
+//     // Step 3: Check connection to updates server
+
+//     // Step 4: Check connection from Core to Web
 // }
 
 // POST: /api/v1/setup/core
