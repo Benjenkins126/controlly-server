@@ -63,7 +63,35 @@ const signUp = (req, res) => {
     }
 }
 
+// POST: /api/v1/user/sign-in
+// Authentication: None
+const signIn = (req, res) => {
+    const body = req.query;
+
+    if(!body.username || !body.password || !body.ip_address) {
+        return res.status(400).send({ status: "error", message: "The fields username, password and ip_address are not all present" });
+    }
+    
+    const returnedUser = userService.signIn(body.username);
+    if(returnedUser !== false) {
+        if(bcrypt.compareSync(body.password, returnedUser.password)) {
+            userService.updateLoginLog(returnedUser.id, body.ip_address);
+
+            const userToken = jwt.sign({ id: returnedUser.id }, process.env.JWTSECRET, {
+                expiresIn: '365d' // Expire in 1 year as a default
+            });
+
+            return res.status(200).send({ status: "success", token: userToken });
+        } else {
+            return res.status(400).send({ status: "error", message: "Your credentials are incorrect" });
+        }
+    } else {
+        return res.status(400).send({ status: "error", message: "Your credentials are incorrect" });
+    }
+}
+
 module.exports = {
     verifyToken,
-    signUp
+    signUp,
+    signIn
 }
