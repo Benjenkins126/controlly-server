@@ -29,7 +29,7 @@ const signUp = (req, res) => {
     const currentStageId = setupService.getSetupStep();
     
     if(parseInt(currentStageId) !== 3) {
-        return res.status(400).send({ status: "error", message: "You are currently in the incorrect setup stage to be creating a user." });
+        return res.status(400).send({ status: "error", message: "You are currently in the incorrect setup stage to be creating a user" });
     }
 
     if(!body.email_address || !body.username || !body.password) {
@@ -41,11 +41,11 @@ const signUp = (req, res) => {
     }
 
     if(body.username.length < 3 || body.username.length > 16) {
-        return res.status(400).send({ status: "error", message: "The username length must be between 3-16 characters in length." });
+        return res.status(400).send({ status: "error", message: "The username length must be between 3-16 characters in length" });
     }
 
     if(body.password.length < 8 || body.username.length > 64) {
-        return res.status(400).send({ status: "error", message: "The password length must be between 8-64 characters in length."});
+        return res.status(400).send({ status: "error", message: "The password length must be between 8-64 characters in length"});
     }
 
     if(!/\d/.test(body.password)) {
@@ -83,10 +83,10 @@ const signIn = (req, res) => {
 
             return res.status(200).send({ status: "success", token: userToken });
         } else {
-            return res.status(400).send({ status: "error", message: "Your credentials are incorrect" });
+            return res.status(401).send({ status: "error", message: "Your credentials are incorrect" });
         }
     } else {
-        return res.status(400).send({ status: "error", message: "Your credentials are incorrect" });
+        return res.status(401).send({ status: "error", message: "Your credentials are incorrect" });
     }
 }
 
